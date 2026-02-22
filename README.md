@@ -2,7 +2,7 @@
 
 A premium, interactive web application designed to help students master coding, aptitude, and communication skills for placements.
 
-## 🚀 How to Run
+## 🚀 How to Run 
 
 ### Development Mode
 To start the application in development mode with Hot Module Replacement (HMR):
