@@ -1,0 +1,92 @@
+﻿
+C:\pp\src\context\AppContext.jsx
+  344:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\pp\src\context\UserContext.jsx
+  12:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  10 |     const savedUser = localStorage.getItem('user');
+  11 |     if (savedUser) {
+> 12 |       setUser(JSON.parse(savedUser));
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  13 |     }
+  14 |     setLoading(false);
+  15 |   }, []);  react-hooks/set-state-in-effect
+  77:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-refresh/only-export-components
+
+C:\pp\src\pages\Analytics.jsx
+  53:13  error  'user' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\pp\src\pages\AptitudeModule.jsx
+   20:8   warning  React Hook useEffect has a missing dependency: 'handleSubmit'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+  157:13  error    Error: Cannot access variable before it is declared
+
+`handleAnswer` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  155 |     useEffect(() => {
+  156 |         if (timeLeft <= 0) {
+> 157 |             handleAnswer(null); // Timeout is wrong answer
+      |             ^^^^^^^^^^^^ `handleAnswer` accessed before it is declared
+  158 |             return;
+  159 |         }
+  160 |         const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
+
+  162 |     }, [timeLeft]);
+  163 |
+> 164 |     const handleAnswer = (idx) => {
+      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 165 |         if (idx === questions[currentIdx].correct) {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 166 |             setScore(prev => prev + 1);
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 175 |         }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 176 |     };
+      | ^^^^^^^ `handleAnswer` is declared here
+  177 |
+  178 |     const q = questions[currentIdx];
+  179 |  react-hooks/immutability
+  162:8   warning  React Hook useEffect has a missing dependency: 'handleAnswer'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+
+C:\pp\src\pages\CodingModule.jsx
+  31:42  error  'Icon' is defined but never used  no-unused-vars
+
+C:\pp\src\pages\MentorDashboard.jsx
+  12:13  error  'communicationData' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  12:45  error  'liveRooms' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u          no-unused-vars
+
+C:\pp\src\pages\Roadmap.jsx
+  11:11  error  'isUpcoming' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\pp\src\pages\StudentDashboard.jsx
+  18:34  error  'Icon' is defined but never used                                                               no-unused-vars
+  69:12  error  'uploading' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+  70:12  error  'uploadSuccess' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  75:11  error  'handleUpload' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+
+C:\pp\src\pages\TeacherDashboard.jsx
+  39:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  37 |         // Add some mocks if empty
+  38 |         if (studentUsers.length === 0) {
+> 39 |             setStudents([
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  40 |                 { id: 1, name: 'Alice Smith', email: 'alice@uni.edu', progress: 85, readiness: 82, coding: 2450, comms: 4.5, lastActive: '2 mins ago' },
+  41 |                 { id: 2, name: 'Bob Johnson', email: 'bob@uni.edu', progress: 62, readiness: 58, coding: 2320, comms: 3.8, lastActive: '1 hour ago' },
+  42 |                 { id: 3, name: 'Ethan Hunt', email: 'ethan@agent.com', progress: 45, readiness: readinessIndex, coding: 1850, comms: 4.2, lastActive: 'Online' },  react-hooks/set-state-in-effect
+
+Γ£û 16 problems (14 errors, 2 warnings)
+
